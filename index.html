@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ORL Bruntál | MUDr. Petr Vocelka</title>
+
+    <meta name="description" content="ORL ambulance Bruntál. Diagnostika a léčba onemocnění uší, nosu a krku. MUDr. Petr Vocelka.">
+
+    <!-- Open Graph (náhled při sdílení na FB, messengeru apod.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ORL Bruntál — MUDr. Petr Vocelka">
+    <meta property="og:description" content="Ušní, nosní a krční ordinace v Bruntále. Diagnostika a léčba onemocnění uší, nosu a krku. Ordinujeme od roku 2000.">
+    <meta property="og:image" content="https://orl-bruntal.cz/ordinace1.webp">
+    <meta property="og:url" content="https://orl-bruntal.cz/">
+    <meta property="og:locale" content="cs_CZ">
+
+    <link rel="canonical" href="https://orl-bruntal.cz/">
+
+    <!-- Twitter/X náhled -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalClinic",
+          "name": "ORL Bruntál — MUDr. Petr Vocelka",
+          "medicalSpecialty": "Otolaryngologic",
+          "physician": {
+            "@type": "Physician",
+            "name": "MUDr. Petr Vocelka",
+            "medicalSpecialty": "Otolaryngologic"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Okružní 4",
+            "addressLocality": "Bruntál",
+            "postalCode": "792 01",
+            "addressCountry": "CZ"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 49.98603,
+            "longitude": 17.46158
+          },
+          "telephone": "+420554713997",
+          "email": "orl@vocelka.cz",
+          "url": "https://orl-bruntal.cz/",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "07:00",
+            "closes": "13:00"
+          }
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- =========================  HEADER  ========================= -->
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#home" class="brand">
+                <strong>ORL Bruntál</strong>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#organizace-pece">Organizace péče</a></li>
+                <li><a href="#pojistovny">Pojišťovny</a></li>
+                <li><a href="#cenik">Ceník</a></li>
+                <li><a href="#sluzby">Služby</a></li>
+                <li><a href="#o-lekari">O lékaři</a></li>
+                <li><a href="#caste-dotazy">Časté dotazy</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+
+            <!-- telefon potichu (ne vyplněné tlačítko) -->
+            <a href="tel:+420554713997" class="nav-phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.75a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.81.57 2.75.7A2 2 0 0 1 22 16.92z"/></svg>
+                554 713 997
+            </a>
+
+            <!-- burger (jen tablet/mobil) -->
+            <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- =========================  MOBILNÍ MENU  ========================= -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <nav class="mobile-menu-panel" aria-label="Mobilní navigace">
+        <button class="mobile-menu-close" id="menuClose" aria-label="Zavřít menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+
+        <a href="#organizace-pece">Organizace péče</a>
+        <a href="#pojistovny">Pojišťovny</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#o-lekari">O lékaři</a>
+        <a href="#caste-dotazy">Časté dotazy</a>
+        <a href="#kontakt">Kontakt</a>
+
+        <a href="tel:+420554713997" class="btn-primary mobile-menu-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.75a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.81.57 2.75.7A2 2 0 0 1 22 16.92z"/></svg>
+            Objednat — 554 713 997
+        </a>
+    </nav>
+</div>
+
+<!-- =========================  OZNÁMENÍ (dovolená / zástupce)  =========================
+     Ukázkový obsah — přepiš termíny a zástupce. Když neplatí, celý blok zakomentuj/smaž. -->
+
+<!-- =========================  HERO  ========================= -->
+<main>
+<section class="hero" id="home">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <span class="eyebrow r r1">MUDr. Petr Vocelka</span>
+            <h1 class="r r2">Ušní, nosní a krční ordinace v&nbsp;Bruntále.</h1>
+            <p class="lead r r3">
+                Diagnostika a&nbsp;léčba onemocnění uší, nosu a&nbsp;krku.
+                V&nbsp;Bruntále ordinujeme od&nbsp;roku&nbsp;2000.
+            </p>
+
+            <div class="cta-row r r4">
+                <a href="tel:+420554713997" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.75a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.81.57 2.75.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Objednat — 554 713 997
+                </a>
+                <a href="#organizace-pece" class="btn-ghost">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Organizace péče
+                </a>
+            </div>
+
+            <div class="info-strip r r5">
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    <div><div class="k">Ordinační hodiny</div><div class="v">Po–Pá&nbsp;7:00–13:00</div></div>
+                </div>
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div><div class="k">Adresa</div><div class="v"><a href="https://maps.google.com/?q=Okružní+4+Bruntál" target="_blank" rel="noopener">Okružní&nbsp;4, Bruntál</a></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-photo r r3">
+            <div class="photo-frame">
+                <img src="ordinace1.webp" alt="Budova ordinace ORL" width="1600" height="2100">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================  ORGANIZACE PÉČE  ========================= -->
+<section class="care" id="organizace-pece">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Než k nám přijdete</span>
+            <h2>Organizace péče</h2>
+            <p>Pacienty objednáváme telefonicky na čísle 554&nbsp;713&nbsp;997. Čas objednání je pouze orientační — akutní a neodkladné případy mají vždy přednost, proto prosím počítejte s časovou rezervou.</p>
+        </div>
+
+        <!-- tři režimy příjmu pacientů -->
+        <div class="care-modes">
+            <div class="care-mode">
+                <span class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span>
+                <h3>Objednaní pacienti</h3>
+                <p>Objednané pacienty volá sestra jménem. Termín je orientační — počítejte prosím s časovou rezervou.</p>
+            </div>
+
+            <div class="care-mode">
+                <span class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                <h3>Akutní bez objednání</h3>
+                <p>Přijímáme zpravidla mezi 8:00 a 11:00. Ošetřujeme je ve volných chvílích mezi objednanými, proto počítejte s delší čekací dobou.</p>
+            </div>
+
+            <div class="care-mode">
+                <span class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7z"/><path d="M12 8v4M12 16h.01"/></svg></span>
+                <h3>Urgentní stavy</h3>
+                <p>Neodkladné případy — například pacient přivezený záchrannou službou — mají vždy absolutní přednost.</p>
+            </div>
+        </div>
+
+        <!-- dvousloupec: kam jinam + pohotovost -->
+        <div class="care-cols">
+            <div class="care-block">
+                <h3>Pokud nechcete dlouho čekat</h3>
+                <p>V běžných případech — bolest v krku, uších nebo respirační infekce — vám stejně dobře a s kratším čekáním pomůže váš praktický lékař.</p>
+                <p>Objednat se můžete i na jiné ORL pracoviště, například v Krnově, Rýmařově, Opavě nebo Olomouci.</p>
+            </div>
+
+            <div class="care-block care-block--emergency">
+                <h3>Pohotovost</h3>
+                <p><strong>Slezská nemocnice Opava</strong><br>
+                Pohotovostní ORL ambulance, přízemí bloku D, pavilon V.<br>
+                Po–Pá 15:30–7:00, o víkendech a svátcích nepřetržitě.<br>
+                <a href="tel:+420553766363">553&nbsp;766&nbsp;363</a></p>
+                <p><strong>ORL klinika, Fakultní nemocnice Olomouc</strong><br>
+                <a href="tel:+420588442827">588&nbsp;442&nbsp;827</a></p>
+            </div>
+        </div>
+
+        <!-- rozbalovací: seznam okolních ambulancí (reuse .qa jako FAQ) -->
+        <details class="qa care-details">
+            <summary>Další ORL pracoviště v okolí
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="answer">
+                <ul class="care-list">
+                    <li><strong>MUDr. Poloni</strong> — poliklinika Krnov · <a href="tel:+420554620025">554 620 025</a></li>
+                    <li><strong>ORL nemocnice Krnov</strong> — budova B, jen út a čt 7–11 · <a href="tel:+420554690273">554 690 273</a></li>
+                    <li><strong>MUDr. AL Kirbiová</strong> — Rýmařov, jen út 9–12 · <a href="tel:+420604804241">604 804 241</a></li>
+                    <li><strong>MUDr. Hanuška</strong> — Opava · <a href="tel:+420552301568">552 301 568</a></li>
+                    <li><strong>MUDr. Dupalová</strong> — Opava · <a href="tel:+420553613748">553 613 748</a></li>
+                    <li><strong>MUDr. Kamrádková</strong> — Opava · <a href="tel:+420593033259">593 033 259</a></li>
+                    <li><strong>MUDr. Chudoba</strong> — Opava · <a href="tel:+420553734644">553 734 644</a></li>
+                    <li><strong>Svět ORL</strong> — Opava, po–čt 14–18 · <a href="tel:+420606775855">606 775 855</a></li>
+                    <li><strong>Opava Medica (MUDr. Vašák)</strong> — Opava-Malé Hoštice · <a href="tel:+420553765154">553 765 154</a></li>
+                    <li><strong>ORL Slezské nemocnice Opava</strong> · <a href="tel:+420553766363">553 766 363</a></li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- rozbalovací: právní poznámka §48 (tiše dole) -->
+        <details class="qa care-details">
+            <summary>Odmítnutí pacienta z kapacitních důvodů (§&nbsp;48)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="answer">
+                Podle § 48 odst. 1 zákona č. 372/2011 Sb., o zdravotních službách: „Poskytovatel, kterého si pacient zvolil, může odmítnout přijetí pacienta do péče, pokud by přijetím pacienta bylo překročeno únosné pracovní zatížení nebo jeho přijetí brání provozní důvody, personální zabezpečení nebo technické a věcné vybavení zdravotnického zařízení; překročením únosného pracovního zatížení se rozumí stav, kdy by zajištěním zdravotních služeb o tohoto pacienta došlo ke snížení úrovně kvality a bezpečnosti zdravotních služeb poskytovaných pacientům již přijatým."
+            </div>
+        </details>
+    </div>
+</section>
+
+<!-- =========================  POJIŠŤOVNY  ========================= -->
+<section class="insurance" id="pojistovny">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Bez doplatků</span>
+            <h2>Smluvní pojišťovny</h2>
+            <p>Péče je hrazena z veřejného zdravotního pojištění u těchto pojišťoven.</p>
+        </div>
+
+        <div class="logo-grid">
+            <div class="logo"><img src="vzp-logo.svg" alt="VZP" width="842" height="228"></div>
+            <div class="logo"><img src="cpzp-logo.svg" alt="ČPZP" width="211" height="56"></div>
+            <div class="logo"><img src="ozp_logotyp_horizont_fialova_RGB.webp" alt="OZP" width="2000" height="557"></div>
+            <div class="logo"><img src="logo.svg" alt="VoZP" width="300" height="50"></div>
+            <div class="logo"><img src="zpmv-logo-header.svg" alt="ZPMV" width="172" height="44"></div>
+            <div class="logo"><img src="rbp.jpg" alt="RBP" width="300" height="255"></div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================  CENÍK (nehrazené výkony)  ========================= -->
+<section class="pricing" id="cenik">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Samoplátci</span>
+            <h2>Ceník nehrazených výkonů</h2>
+            <p>Naprostá většina péče je hrazena z veřejného zdravotního pojištění. Následující výkony pojišťovna nehradí a hradí je pacient přímo.</p>
+        </div>
+
+        <ul class="price-list">
+            <li class="price-row">
+                <div class="price-desc">
+                    <strong>Audiologické vyšetření a lékařská zpráva</strong>
+                    <span class="price-note">Vstupní, preventivní a výstupní audiologické vyšetření; vystavení lékařské zprávy pro účely řidičského nebo zbrojního průkazu.</span>
+                </div>
+                <div class="price-amt">600 Kč</div>
+            </li>
+            <li class="price-row">
+                <div class="price-desc">
+                    <strong>Lékařský posudek pro pojišťovnu</strong>
+                    <span class="price-note">Za 1 formulář.</span>
+                </div>
+                <div class="price-amt">400 Kč</div>
+            </li>
+            <li class="price-row">
+                <div class="price-desc">
+                    <strong>Výpis z dokumentace</strong>
+                </div>
+                <div class="price-amt">400 Kč</div>
+            </li>
+            <li class="price-row">
+                <div class="price-desc">
+                    <strong>Nastřelení náušnic (2 ks)</strong>
+                    <span class="price-note">Zahrnuje nastřelení 2 ks náušnic, 2 náušnice Blomdahl, dezinfekční čtverečky Blomdahl a písemné poučení.</span>
+                </div>
+                <div class="price-amt">1 150 Kč</div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- =========================  GALERIE  ========================= -->
+<section class="gallery" id="gallery">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Prostředí</span>
+            <h2>Jak to u nás vypadá</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <a href="cekarna.webp" target="_blank" rel="noopener"><img src="cekarna.webp" alt="Čekárna ordinace ORL" width="1600" height="1200"></a>
+            <a href="vysetrovna.webp" target="_blank" rel="noopener"><img src="vysetrovna.webp" alt="Vyšetřovna s ORL křeslem" width="1600" height="1232"></a>
+            <a href="ticha-komora.webp" target="_blank" rel="noopener"><img src="ticha-komora.webp" alt="Tichá komora pro audiometrii" width="1600" height="1200"></a>
+        </div>
+    </div>
+</section>
+
+<!-- =========================  SLUŽBY (seznam bez karet)  ========================= -->
+<section class="services" id="sluzby">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Co nabízíme</span>
+            <h2>Služby</h2>
+        </div>
+
+        <div class="services-list">
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-1"/><circle cx="20" cy="11" r="2"/></svg></span>
+                <div><h3>ORL vyšetření</h3><p>Vyšetření uší, nosu a krku — od bolesti v krku po problémy se sluchem.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9a3 3 0 0 1 0 6"/><path d="M19 7a6 6 0 0 1 0 10"/></svg></span>
+                <div><h3>Audiometrie</h3><p>Měření sluchu v tiché komoře. Přesně ukáže stav vašeho sluchu.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14a9 9 0 0 1 18 0"/><path d="M12 14l4-3"/></svg></span>
+                <div><h3>Tympanometrie</h3><p>Rychlé a bezbolestné vyšetření středního ucha a pohyblivosti bubínku.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+                <div><h3>Otomikroskopie</h3><p>Podrobné prohlédnutí zvukovodu a bubínku pod mikroskopem.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span>
+                <div><h3>Ošetření krvácení z nosu</h3><p>Rychlé a šetrné zastavení krvácení z nosu.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+                <div><h3>Odstranění ušního mazu</h3><p>Bezpečné a bezbolestné vyčištění zvukovodu — výplachem nebo ručně.</p></div>
+            </div>
+
+            <div class="svc">
+                <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 5.6L20 11l-5.9 2.4L12 19l-2.1-5.6L4 11l5.9-2.4z"/></svg></span>
+                <div><h3>Nastřelování náušnic</h3><p>Nastřelení náušnic z lékařského titanu šetrným systémem Blomdahl. Vhodné i pro děti.</p></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- =========================  O LÉKAŘI  ========================= -->
+<section class="doctor" id="o-lekari">
+    <div class="container doctor-grid">
+        <div class="doctor-text">
+            <span class="eyebrow">O lékaři</span>
+            <h2>MUDr. Petr Vocelka</h2>
+            <p class="bio">
+                Otorinolaryngologii se věnuje od roku 1994. Po šesti letech na ORL oddělení Slezské nemocnice v Opavě, kde působil i jako zástupce primáře, vede od roku 2000 vlastní ORL ambulanci v Bruntále.
+            </p>
+            <ul class="cv">
+                <li class="cv-item">
+                    <div class="cv-year">1994</div>
+                    <div class="cv-text">Lékařská fakulta Univerzity Palackého v Olomouci</div>
+                </li>
+                <li class="cv-item">
+                    <div class="cv-year">1994–2000</div>
+                    <div class="cv-text">ORL oddělení Slezské nemocnice v Opavě</div>
+                </li>
+                <li class="cv-item">
+                    <div class="cv-year">1997</div>
+                    <div class="cv-text">Atestace z otorinolaryngologie I. stupně</div>
+                </li>
+                <li class="cv-item">
+                    <div class="cv-year">1997–2000</div>
+                    <div class="cv-text">Zástupce primáře ORL oddělení Slezské nemocnice v Opavě</div>
+                </li>
+                <li class="cv-item">
+                    <div class="cv-year">2000 – dosud</div>
+                    <div class="cv-text">Soukromá ORL ambulance v Bruntále</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="doctor-photo">
+            <div class="photo-frame">
+                <img src="lekar1.webp" alt="MUDr. Petr Vocelka" width="1920" height="1911">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================  FAQ  ========================= -->
+<section class="faq" id="caste-dotazy">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Dobré vědět</span>
+            <h2>Často kladené dotazy</h2>
+        </div>
+
+        <div>
+            <details class="qa">
+                <summary>Byl jsem objednán na určitý čas. Proč čekám?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+                <div class="answer">Čas objednání je pouze orientační. Akutní a neodkladné případy mají vždy přednost, proto může dojít ke zpoždění. Doporučujeme počítat s časovou rezervou.</div>
+            </details>
+
+            <details class="qa">
+                <summary>Proč mají někteří pacienti přednost?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+                <div class="answer">Neodkladné a urgentní případy mají vždy přednost před běžnými kontrolami a plánovanými vyšetřeními.</div>
+            </details>
+
+            <details class="qa">
+                <summary>Co dělat, když se nemohu dovolat?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+                <div class="answer">Lékař i sestra jsou během ordinační doby často zaměstnáni vyšetřováním pacientů. Pokud se nedovoláte napoprvé, zkuste zavolat později.</div>
+            </details>
+
+            <details class="qa">
+                <summary>Potřebuji doporučení od praktického lékaře?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+                <div class="answer">V některých případech je doporučení vhodné. Pokud si nejste jistí, kontaktujte ambulanci telefonicky.</div>
+            </details>
+
+            <details class="qa">
+                <summary>Provádíte nastřelování náušnic?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+                <div class="answer">Ano. Nastřelování náušnic provádíme po předchozím objednání. Používáme systém Blomdahl z lékařského titanu, který je šetrný a vhodný i pro děti. Cena nastřelení náušnic je 1150 Kč.</div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- =========================  KONTAKT  ========================= -->
+<section class="contact" id="kontakt">
+    <div class="container contact-grid">
+        <div class="contact-info">
+            <span class="eyebrow">Kde nás najdete</span>
+            <h2>Kontakt</h2>
+
+            <div class="c-row">
+                <span class="k">Adresa</span>
+                <span class="v"><a href="https://maps.google.com/?q=Okružní+4+Bruntál" target="_blank" rel="noopener">Okružní 4, 792 01 Bruntál</a></span>
+            </div>
+            <div class="c-row">
+                <span class="k">Telefon</span>
+                <span class="v"><a href="tel:+420554713997">554 713 997</a></span>
+            </div>
+            <div class="c-row">
+                <span class="k">E-mail</span>
+                <span class="v"><a href="mailto:orl@vocelka.cz">orl@vocelka.cz</a></span>
+            </div>
+            <div class="c-row">
+                <span class="k">Ordinační hodiny</span>
+                <span class="v">Po–Pá 7:00–13:00</span>
+            </div>
+        </div>
+
+        <div class="map-frame">
+            <a href="https://maps.google.com/?q=Okružní+4+Bruntál" target="_blank" rel="noopener" class="map-link">
+                <img src="mapa.webp" alt="Mapa – ORL Bruntál, Okružní 4, Bruntál" width="989" height="519" loading="lazy">
+                <span class="map-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                    Otevřít v Mapách
+                </span>
+                <span class="map-credit">© OpenStreetMap</span>
+            </a>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- =========================  FOOTER  ========================= -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <strong>ORL Bruntál</strong>
+                <p>Soukromá ORL ambulance v Bruntále. Diagnostika a léčba onemocnění uší, nosu a krku.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Kontakt</h3>
+                <a href="tel:+420554713997">554 713 997</a>
+                <a href="mailto:orl@vocelka.cz">orl@vocelka.cz</a>
+                <a href="https://maps.google.com/?q=Okružní+4+Bruntál" target="_blank" rel="noopener">Okružní 4, 792 01 Bruntál</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Sekce</h3>
+                <a href="#organizace-pece">Organizace péče</a>
+                <a href="#pojistovny">Pojišťovny</a>
+                <a href="#cenik">Ceník</a>
+                <a href="#sluzby">Služby</a>
+                <a href="#o-lekari">O lékaři</a>
+                <a href="#caste-dotazy">Časté dotazy</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 ORL Bruntál — MUDr. Petr Vocelka</div>
+    </div>
+</footer>
+
+<!-- LIGHTBOX (galerie se šipkami) -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít fotku">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Předchozí fotka">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Další fotka">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+</div>
+
+<script>
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+
+// posbírá fotky z galerie do pole (adresa + popisek)
+const galleryLinks = Array.from(document.querySelectorAll('.gallery-grid a'));
+const galleryItems = galleryLinks.map(function (link) {
+    return {src: link.getAttribute('href'), alt: link.querySelector('img').alt };
+});
+
+let currentIndex = 0
+
+function showImage(index) {
+    const n = galleryItems.length;
+    currentIndex = (index + n) % n;              // zacyklení: z poslední na první a naopak
+    lightboxImg.src = galleryItems[currentIndex].src;
+    lightboxImg.alt = galleryItems[currentIndex].alt;
+}
+
+function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.add('lightbox-open');
+    document.body.style.overflow = 'hidden';     // zamkne posouvání pod závojem
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('lightbox-open');
+    document.body.style.overflow = '';
+}
+
+function nextImage() { showImage(currentIndex + 1); }
+function prevImage() { showImage(currentIndex - 1); }
+
+// otevření: klik na fotku v galerii
+galleryLinks.forEach(function (link, i) {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        openLightbox(i)
+    });
+});
+
+// tlačítka
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', prevImage);
+lightboxNext.addEventListener('click', nextImage);
+
+// klik na závoj (mimo fotku a tlačítka) zavře
+lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+});
+
+// klávesy — jen když je lightbox otevřený
+document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('lightbox-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight') nextImage();
+    else if (e.key === 'ArrowLeft') prevImage();
+});
+
+// swipe na mobilu
+let touchStartX = 0
+lightbox.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+lightbox.addEventListener('touchend', function (e) {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {          // práh, ať to nereaguje na drobný pohyb
+        if (diff < 0) nextImage();      // tah doleva → další
+        else prevImage();               // tah doprava → předchozí
+    }
+});
+
+    // ---- BURGER / MOBILNÍ MENU ----
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+
+function openMenu() {
+    mobileMenu.classList.add('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';   // zamkne rolování pod menu
+}
+
+function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+}
+
+burger.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
+
+// klik na odkaz v menu → zavřít a nechat proskrolovat na sekci
+mobileMenu.querySelectorAll('.mobile-menu-panel a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+});
+
+// Esc zavře menu
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+});
+</script>
+
+</body>
+
+</html>

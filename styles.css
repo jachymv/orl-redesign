@@ -1,0 +1,1437 @@
+/* =================================================================
+   ORL Bruntál — styly (finální verze)
+
+   Obsah (ve stejném pořadí níž):
+     1.  Reset
+     2.  Proměnné (barvy, rozměry)
+     3.  Základ (typografie, container, focus)
+     4.  Tlačítka
+     5.  Header
+     6.  Hero
+     7.  Foto rámeček (sdílený)
+     8.  Služby   (seznam bez karet)
+     9.  O lékaři (časová osa)
+     10. Pojišťovny (loga)
+     11. Ceník     (nehrazené výkony)
+     12. Galerie
+     13. FAQ       (nativní <details>)
+     14. Kontakt
+     15. Důležité informace
+     16. Footer
+     17. Animace nástupu
+     18. Mobil
+   ================================================================= */
+
+   /* newsreader-regular - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/newsreader-v26-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* newsreader-500 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/newsreader-v26-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* newsreader-600 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/newsreader-v26-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* hanken-grotesk-regular - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/hanken-grotesk-v12-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* hanken-grotesk-500 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/hanken-grotesk-v12-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* hanken-grotesk-600 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/hanken-grotesk-v12-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* hanken-grotesk-700 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/hanken-grotesk-v12-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+   
+/* ---------- 1. RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ink:         #1b2832;   /* hlavní text (teplejší než čistě černá) */
+    --muted:       #4a5763;   /* sekundární text */
+    --primary:     #1f6f7e;   /* teal-modrá akcent */
+    --primary-dk:  #16545f;   /* tmavší odstín pro hover */
+    --primary-sft: #e9f2f3;   /* jemné akcentní pozadí */
+
+    --bg:          #fbfaf6;   /* teplý "papírový" podklad */
+    --surface:     #ffffff;   /* karty, vyvýšené plochy */
+    --border:      #e7e1d6;   /* teplý okraj */
+
+    --radius:      14px;
+    --maxw:        1120px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 74px; 
+}
+
+body {
+    font-family: "Hanken Grotesk", sans-serif;
+    color: var(--ink);
+    /* jemný barevný nádech v pravém horním rohu + papírové pozadí */
+    background: radial-gradient(900px 520px at 88% -8%, var(--primary-sft) 0%, rgba(233,242,243,0) 60%), var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* POJISTKA PRO IKONY: žádné inline <svg> se samo neroztáhne přes celou plochu.
+   Konkrétní pravidla níž (.svc-ico svg, .photo-frame svg, .btn-primary svg …) si velikost přepíšou. */
+svg { 
+    width: 1.5rem; height: 1.5rem; flex-shrink: 0; 
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(var(--maxw), 92%);
+    margin: 0 auto;
+}
+
+section {
+    padding: 5.5rem 0;
+}
+
+/* Nadpisy v serifu (Newsreader) = "gravitas / důvěra" */
+h1,
+h2,
+h3 { 
+    font-family: "Newsreader", serif; letter-spacing: -0.015em; line-height: 1.12; 
+}
+h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+h2 {
+    font-size: clamp(1.7rem, 3vw, 2.2rem); 
+    font-weight: 500; 
+}
+
+h3 {
+    font-size: 1.12rem; 
+    font-weight: 600; 
+    letter-spacing: 0; 
+}
+
+/* malý "eyebrow" štítek nad nadpisy */
+.eyebrow {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.55rem; 
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 0.74rem; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 0.12em; 
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--primary);
+    opacity: 0.5;
+}
+
+/* společná hlavička sekce (eyebrow + nadpis + popis) */
+.section-head { 
+    max-width: 42rem; 
+    margin-bottom: 3rem; 
+}
+
+.section-head p { color: var(--muted); margin-top: 0.6rem; font-size: 1.05rem; }
+
+/* Zaostření: myš nezobrazí rámeček, klávesnice ano (a vypadá hezky) */
+*:focus:not(:focus-visible) { outline: none; }
+:focus-visible { 
+    outline: 2px solid var(--primary); 
+    outline-offset: 3px; 
+    border-radius: 4px; 
+}
+
+/* ---------- 4. TLAČÍTKA ---------- */
+.btn-primary {
+    display: inline-flex; 
+    align-items: center; gap: 0.6rem;
+    background: var(--primary); 
+    color: #fff;
+    padding: 0.95rem 1.5rem; 
+    border-radius: 12px;
+    font-weight: 600; 
+    font-size: 1.02rem;
+    box-shadow: 0 8px 20px rgba(31,111,126,0.22);
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dk);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(31,111,126,0.28);
+}
+
+.btn-primary svg {
+    width: 19px;
+    height: 19px;
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0.95rem 1.4rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 1.02rem;
+    transition: border-color .18s ease, transform .18s ease;
+}
+
+.btn-ghost:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.btn-ghost svg {
+    width: 18px;
+    height: 18px;
+    color: var(--muted);
+}
+
+/* ---------- 5. HEADER ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(251,250,246,0.82);
+    backdrop-filter: saturate(180%) blur(10px);  /* rozmaže obsah pod sebou */
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 78px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.brand strong {
+    font-family: "Newsreader", serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.brand span {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 500;
+    transition: color .18s ease;
+}
+
+.nav-links a:hover {
+    color: var(--ink);
+}
+
+/* telefon v hlavičce — POTICHU (ne vyplněné tlačítko) */
+.nav-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    transition: color .18s ease;
+}
+
+.nav-phone:hover {
+    color: var(--primary);
+}
+
+.nav-phone svg {
+    width: 17px;
+    height: 17px;
+    color: var(--primary);
+}
+
+/* ---------- OZNÁMENÍ (dovolená / zástupce) ---------- */
+.notice {
+    background: #fdf4e5;                 /* teplá, jemně žlutá – ladí s papírovým podkladem */
+    border-bottom: 1px solid #f0dcb4;
+    color: #6f5320;
+}
+
+.notice-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0;
+}
+
+.notice svg {
+    width: 20px;
+    height: 20px;
+    color: #c0892c;
+    flex-shrink: 0;
+}
+
+.notice p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.notice a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* ---------- 6. HERO ---------- */
+.hero {
+    padding: 4.5rem 0 4rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4.5rem;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    margin-bottom: 1.1rem;
+}
+
+.hero h1 .accent {
+    color: var(--primary);
+}
+
+.lead {
+    font-size: 1.08rem;
+    color: var(--muted);
+    max-width: 30rem;
+    margin-bottom: 2rem;
+}
+
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2.4rem;
+}
+
+/* info pruh v heru (hodiny / adresa) */
+.info-strip {
+    display: flex;
+    gap: 2.2rem;
+    flex-wrap: wrap;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--border);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+
+.info-item svg { 
+    width: 20px; 
+    height: 20px; 
+    color: var(--primary); 
+    flex-shrink: 0; 
+    margin-top: 2px; 
+}
+
+.info-item .k { 
+    font-size: 0.76rem; 
+    color: var(--muted); 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; }
+
+.info-item .v {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* ---------- 7. FOTO RÁMEČEK (sdílený hero + lékař) ---------- */
+.photo-frame {
+    position: relative;
+    z-index: 2;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;            /* ořízne fotku do zaoblených rohů */
+    background: #f4efe6;         /* podklad, než se fotka načte */
+}
+
+/* fotka vyplní celý rámeček, ořízne se přes střed a nedeformuje se */
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-photo {
+    position: relative;
+}
+
+.hero-photo::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 22px -22px -22px 22px;
+    border-radius: var(--radius);
+    background: var(--primary-sft);
+    border: 1px solid var(--border);
+}
+
+/* ---------- 8. SLUŽBY (seznam bez karet — jemné linky místo boxů) ---------- */
+.services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+}
+
+.svc {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.svc:nth-child(-n+2) {
+    border-top: none;    /* horní řada bez čáry */
+}
+
+.svc-ico {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+.svc-ico svg {
+    width: 22px;
+    height: 22px;
+}
+
+.svc h3 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.svc p {
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+/* ---------- 9. O LÉKAŘI ---------- */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.doctor-text .bio {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 32rem;
+}
+
+/* časová osa vzdělání / praxe */
+.cv {
+    border-left: 2px solid var(--border);
+    padding-left: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    margin-top: 1.8rem;
+}
+
+.cv-item {
+    position: relative;
+}
+
+.cv-item::before {
+    content: "";
+    position: absolute;
+    left: -1.6rem;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px var(--bg);   /* maskuje čáru za puntíkem */
+}
+
+.cv-item:last-child::after {
+    content: "";
+    position: absolute;
+    left: -1.6rem;
+    top: 19px;          /* začne až pod posledním puntíkem */
+    bottom: 0;
+    width: 4px;
+    background: var(--bg);
+    transform: translateX(-50%);
+}
+
+.cv-year {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.88rem;
+}
+
+.cv-text {
+    font-weight: 500;
+}
+
+.doctor-photo {
+    position: relative;
+}
+
+.doctor-photo .photo-frame {
+    aspect-ratio: 4 / 5;
+}
+
+.doctor-photo::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 22px 22px -22px -22px;
+    border-radius: var(--radius);
+    background: var(--primary-sft);
+    border: 1px solid var(--border);
+}
+
+/* ---------- 10. POJIŠŤOVNY ---------- */
+.insurance { 
+    background: rgba(255,255,255,0.55); 
+    border-top: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+}
+
+/* 3 karty na řádek = větší a líp čitelné (na mobilu 2 – viz blok 18) */
+.logo-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); gap: 1.25rem; 
+}
+
+.logo {
+    min-height: 132px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 1.75rem;                  /* vzduch okolo loga, ať se nedotýká okrajů */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+/* loga barevná, sjednocená jen max. výškou (ne tvarem) */
+.logo img {
+    max-height: 64px;                  /* hlavní knoflík na velikost loga */
+    max-width: 100%;
+    width: auto; height: auto;
+    object-fit: contain;
+}
+
+/* ---------- 11. CENÍK (klidný "menu" seznam, užší blok = méně dominantní) ---------- */
+.price-list { 
+    max-width: 760px; 
+}
+
+.price-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline; 
+    gap: 2.5rem; 
+    padding: 1.3rem 0; 
+    border-top: 1px solid var(--border); 
+}
+
+.price-row:first-child { 
+    border-top: none; 
+}
+
+.price-desc strong { 
+    font-weight: 600; 
+    font-size: 1.02rem; 
+}
+
+.price-note { 
+    display: block; 
+    color: var(--muted); 
+    font-size: 0.95rem; 
+    margin-top: 0.3rem; 
+    max-width: 46ch; 
+}
+
+.price-amt { 
+    font-weight: 700; 
+    font-size: 1.05rem; 
+    white-space: nowrap; 
+    font-variant-numeric: tabular-nums; 
+}
+
+/* ---------- 12. GALERIE ---------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.gallery-grid a {
+    display: block;
+    cursor: zoom-in;
+    transition: opacity .18s ease;
+}
+.gallery-grid a:hover { opacity: 0.9; }
+
+/* všechny fotky stejně vysoké, zaoblené, s jemným rámečkem */
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+}
+
+/* ---------- 13. FAQ (nativní <details>, žádný JS) ---------- */
+.faq { 
+    background: rgba(255,255,255,0.55); 
+    border-top: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+}
+
+.qa { 
+    background: var(--surface); 
+    border: 1px solid var(--border); 
+    border-radius: 12px; 
+    margin-bottom: 0.8rem; 
+    overflow: hidden; 
+}
+
+.qa summary {
+    list-style: none; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 1rem;
+    padding: 1.25rem 1.4rem; 
+    font-weight: 600; 
+    font-size: 1.02rem;
+}
+
+.qa summary::-webkit-details-marker { 
+    display: none; 
+}   /* schová defaultní trojúhelník */
+
+.qa summary svg { 
+    width: 18px; 
+    height: 18px; 
+    color: var(--primary); 
+    flex-shrink: 0; 
+    transition: transform .2s ease; 
+}
+
+.qa[open] summary svg { 
+    transform: rotate(45deg); 
+}       /* + se otočí na × */
+
+.qa .answer { 
+    padding: 0 1.4rem 1.4rem; 
+    color: var(--muted); 
+}
+
+/* fokus: rámeček kolem CELÉ otázky, ne oříznutý kousek uvnitř */
+.qa:has(summary:focus-visible) {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+.qa summary:focus-visible {
+    outline: none;   /* ten na summary ruším, dávám ho na .qa výše */
+}
+
+/* ---------- ORGANIZACE PÉČE ---------- */
+.care-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.care-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.care-ico {
+    color: var(--primary);
+    display: inline-flex;
+}
+
+.care-ico svg {
+    width: 26px;
+    height: 26px;
+}
+
+.care-mode h3 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+}
+
+.care-mode p {
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.care-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.care-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+}
+
+.care-block h3 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+}
+
+.care-block p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.care-block p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* pohotovostní karta – jemné zvýraznění (má přednost v pozornosti) */
+.care-block--emergency {
+    background: var(--primary-sft);
+    border-color: #cfe4e6;
+}
+
+.care-block--emergency a {
+    color: var(--primary-dk);
+    font-weight: 600;
+}
+
+/* seznam okolních ambulancí uvnitř rozbalovacího */
+.care-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.care-list li {
+    font-size: 0.97rem;
+    color: var(--muted);
+}
+
+.care-list strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.care-list a {
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+/* ---------- 14. KONTAKT ---------- */
+.contact-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: start; 
+}
+
+.c-row { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.15rem; 
+    margin-bottom: 1.4rem; 
+}
+
+.c-row .k { 
+    font-size: 0.76rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    color: var(--muted); 
+}
+
+.c-row .v { 
+    font-weight: 600; 
+    font-size: 1.05rem; 
+}
+
+.c-row .v a:hover { 
+    color: var(--primary); 
+}
+
+.contact-actions { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.8rem; 
+    margin-top: 1.8rem; 
+}
+
+/* mapa jako statický náhled s odkazem (žádný vložený Google iframe) */
+.map-frame {
+    position: relative;
+    min-height: 360px;
+    height: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;          /* ořízne obrázek do zaoblených rohů */
+}
+
+.map-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+}
+
+.map-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* jemné ztmavení při najetí – signál, že je to klikací */
+.map-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(27,40,50,0);
+    transition: background .18s ease;
+}
+
+.map-link:hover::after {
+    background: rgba(27,40,50,0.12);
+}
+
+/* tlačítko „Otevřít v Mapách" v rohu */
+.map-badge {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0.5rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+
+.map-badge svg {
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+}
+
+/* drobná atribuce OpenStreetMap */
+.map-credit {
+    position: absolute;
+    left: 0.6rem;
+    bottom: 0.55rem;
+    z-index: 2;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.4);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* ---------- 15. LIGHTBOX ---------- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(27, 40, 50, 0.92); 
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s ease;
+        background: rgba(18, 18, 20, 0.95);   /* bylo rgba(27, 40, 50, 0.92) — teď neutrální a tmavší */
+}
+
+.lightbox-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 92%;
+    max-height: 88vh;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    cursor: default;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .18s ease;
+}
+
+/* šipky pro listování v galerii */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .18s ease;
+    z-index: 2;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-nav svg {
+    width: 26px;
+    height: 26px;
+}
+
+.lightbox-close:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.lightbox-close svg {
+    width: 22px;
+    height: 22px; 
+}
+
+/* ---------- 16. FOOTER ---------- */
+.site-footer { 
+    background: var(--ink); 
+    color: rgba(255,255,255,0.7); 
+    padding: 3.5rem 0 2rem; 
+}
+
+.footer-grid { 
+    display: grid; 
+    grid-template-columns: 1.4fr 1fr 1fr; 
+    gap: 4rem; 
+    padding-bottom: 2.5rem; 
+    border-bottom: 1px solid rgba(255,255,255,0.12); 
+}
+
+.footer-brand strong { 
+    font-family: "Newsreader", serif; 
+    font-size: 1.3rem; 
+    color: #fff; 
+    display: block; 
+}
+
+.footer-brand span { 
+    font-size: 0.88rem; 
+}
+
+.footer-brand p { 
+    margin-top: 0.8rem; 
+    font-size: 0.92rem; 
+    max-width: 22rem; 
+}
+
+.footer-col h3 { 
+    font-family: "Hanken Grotesk", sans-serif; 
+    font-size: 0.78rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.08em; 
+    color: rgba(255,255,255,0.5); 
+    margin-bottom: 0.9rem; 
+    font-weight: 600;
+}
+
+.footer-col a, .footer-col p { 
+    display: block; 
+    color: rgba(255,255,255,0.7); 
+    font-size: 0.95rem; 
+    margin-bottom: 0.5rem; 
+    transition: color .18s ease; 
+}
+
+.footer-col a:hover { 
+    color: #fff; 
+}
+
+.footer-bottom { 
+    padding-top: 1.6rem; 
+    font-size: 0.85rem; 
+    color: rgba(255,255,255,0.5); 
+}
+
+/* ---------- 17. ANIMACE NÁSTUPU ---------- */
+/* hero se odhalí hned po načtení */
+@keyframes rise {
+    
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+
+}
+
+.r {
+    opacity: 0;
+    animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+.r1 {
+    animation-delay: .05s
+}
+
+.r2 {
+    animation-delay: .13s
+}
+
+.r3 {
+    animation-delay: .21s
+}
+
+.r4 {
+    animation-delay: .29s
+}
+
+.r5 {
+    animation-delay: .37s
+}
+
+@media (prefers-reduced-motion: reduce) {
+    
+    .r {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+}
+
+/* ---------- 18. MOBIL ---------- */
+@media (max-width: 768px) {
+
+    section {
+        padding: 3.5rem 0;
+    }
+
+    .container {
+        width: 100%;
+        padding-inline: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        padding: 2.5rem 0 2rem;
+    }
+
+    .hero-grid,
+    .doctor-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+
+    .hero-photo .photo-frame {
+        aspect-ratio: auto;
+    }
+
+    .hero-photo img {
+        height: auto;
+    }
+
+    .hero-photo::after,
+    .doctor-photo::after {
+    display: none;
+    }
+
+    .care-modes {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .care-cols {
+        grid-template-columns: 1fr;
+    }
+
+    /* skrytí popisné věty v heru – šetří místo na malých displejích */
+    .lead {
+        display: none;
+    }
+
+    .services-list {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .svc:nth-child(2) {
+        border-top: 1px solid var(--border);
+    }
+
+    .svc:first-child {
+        border-top: none;
+    }
+
+    .logo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .price-row {
+        gap: 1.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .map-frame {
+        min-height: 260px;
+    }
+
+    .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .cta-row .btn-primary,
+    .cta-row .btn-ghost {
+        justify-content: center;
+    }
+
+    .navbar {
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+    
+    .brand {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.1rem;
+    }
+
+    .brand strong {
+        font-size: 1.3rem;
+    }
+    
+    .nav-phone {
+        white-space: nowrap;
+    }
+
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox-prev {
+        left: 0.4rem;
+    }
+
+    .lightbox-next {
+        right: 0.4rem;
+    }
+
+}
+
+/* ---------- BURGER + MOBILNÍ MENU ---------- */
+
+/* tlačítko burger – na desktopu skryté, zobrazí se až v bloku 1080px níž */
+.burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background .18s ease;
+}
+
+.burger:hover {
+    background: var(--primary-sft);
+}
+
+.burger svg {
+    width: 26px;
+    height: 26px;
+}
+
+/* obal celého menu (závoj + panel) – ve výchozím stavu zavřené */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.mobile-menu.is-open {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ztmavení za panelem */
+.mobile-menu-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(27, 40, 50, 0.5);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.mobile-menu.is-open .mobile-menu-overlay {
+    opacity: 1;
+}
+
+/* vysouvací panel zprava */
+.mobile-menu-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(320px, 82%);
+    background: var(--surface);
+    box-shadow: -12px 0 40px rgba(0,0,0,0.15);
+    padding: 5rem 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transform: translateX(100%);
+    transition: transform .28s cubic-bezier(.2,.7,.2,1);
+    overflow-y: auto;
+}
+
+.mobile-menu.is-open .mobile-menu-panel {
+    transform: translateX(0);
+}
+
+/* křížek pro zavření */
+.mobile-menu-close {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .18s ease;
+}
+
+.mobile-menu-close:hover {
+    background: var(--primary-sft);
+}
+
+.mobile-menu-close svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* odkazy v panelu (mimo tlačítko Objednat) */
+.mobile-menu-panel a:not(.btn-primary) {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color .18s ease;
+}
+
+.mobile-menu-panel a:not(.btn-primary):hover {
+    color: var(--primary);
+}
+
+/* tlačítko Objednat dole v panelu */
+.mobile-menu-cta {
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+/* pod 1080px schováme plné menu a ukážeme burger (dřív, než se nav rozmáčkne) */
+@media (max-width: 1080px) {
+    .nav-links { display: none; }
+    .burger { display: inline-flex; margin-left: 0.75rem; }
+    .nav-phone { margin-left: auto; }   /* telefon + burger drží u sebe vpravo */
+}
+
+/* hodně malé displeje – logo na jeden řádek až do ~340px */
+@media (max-width: 400px) {
+    .brand strong {
+        font-size: 1.15rem;
+    }
+
+    .nav-phone {
+        font-size: 0.9rem;
+        gap: 0.4rem;
+    }
+
+    .nav-phone svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .navbar {
+        gap: 0.6rem;
+    }
+
+    .burger {
+        width: 40px;
+        height: 40px;
+        margin-left: 0.3rem;
+    }
+}
