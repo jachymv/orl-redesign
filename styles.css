@@ -616,6 +616,14 @@ header {
     object-fit: contain;
 }
 
+.logo img.logo-sm {
+    max-height: 44px;
+}
+
+.logo img.logo-sm-plus {
+    max-height: 52px;
+}
+
 /* ---------- 11. CENÍK (klidný "menu" seznam, užší blok = méně dominantní) ---------- */
 .price-list { 
     max-width: 760px; 
