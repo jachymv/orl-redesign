@@ -16,7 +16,7 @@
      12. Galerie
      13. FAQ       (nativní <details>)
      14. Kontakt
-     15. Důležité informace
+     15. Lightbox
      16. Footer
      17. Animace nástupu
      18. Mobil
@@ -285,11 +285,6 @@ header {
     white-space: nowrap;
 }
 
-.brand span {
-    font-size: 0.82rem;
-    color: var(--muted);
-}
-
 .nav-links {
     display: flex;
     align-items: center;
@@ -377,10 +372,6 @@ header {
     font-weight: 500;
     line-height: 1.08;
     margin-bottom: 1.1rem;
-}
-
-.hero h1 .accent {
-    color: var(--primary);
 }
 
 .lead {
@@ -875,13 +866,6 @@ header {
     color: var(--primary); 
 }
 
-.contact-actions { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.8rem; 
-    margin-top: 1.8rem; 
-}
-
 /* mapa jako statický náhled s odkazem (žádný vložený Google iframe) */
 .map-frame {
     position: relative;
@@ -966,12 +950,11 @@ header {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: rgba(27, 40, 50, 0.92); 
+    background: rgba(18, 18, 20, 0.95);
     cursor: zoom-out;
     opacity: 0;
     visibility: hidden;
     transition: opacity .2s ease, visibility .2s ease;
-        background: rgba(18, 18, 20, 0.95);   /* bylo rgba(27, 40, 50, 0.92) — teď neutrální a tmavší */
 }
 
 .lightbox-open {
@@ -1064,10 +1047,6 @@ header {
     font-size: 1.3rem; 
     color: #fff; 
     display: block; 
-}
-
-.footer-brand span { 
-    font-size: 0.88rem; 
 }
 
 .footer-brand p { 
@@ -1167,10 +1146,6 @@ header {
         padding-inline: 1.5rem;
     }
 
-    .nav-links {
-        display: none;
-    }
-
     .hero {
         padding: 2.5rem 0 2rem;
     }
@@ -1223,7 +1198,20 @@ header {
     }
 
     .logo-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        height: 96px;      /* nižší, obdélníkový tvar */
+        padding: 1rem 1.5rem;
+    }
+
+    .logo img {
+        max-height: 56px;          /* kompaktní loga (VZP, ČPZP, ZPMV) */
+    }
+    
+    .logo img.logo-sm {
+        max-height: 40px;          /* široká loga (OZP apod.) – menší, ať nepřerůstají */
     }
 
     .price-row {
