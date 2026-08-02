@@ -1146,6 +1146,10 @@ header {
         padding-inline: 1.5rem;
     }
 
+    .nav-links { 
+        display: none 
+    }
+
     .hero {
         padding: 2.5rem 0 2rem;
     }
